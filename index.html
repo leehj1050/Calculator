@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계산기</title>
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .calculator {
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+        width: 700px;
+        height: 700px;
+        border: 1px solid black;
+      }
+      .wrap {
+        display: grid;
+        grid-template-columns: repeat(4, 65px);
+        border: 1px solid black;
+      }
+      .wrap .text {
+        grid-column: span 4;
+        font-size: 30px;
+        text-align: right;
+      }
+      .wrap input {
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .clear {
+        grid-column: span 3;
+        background-color: orangered;
+      }
+      .equer {
+        grid-column: span 2;
+      }
+      .operator {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <form class="wrap">
+        <input type="text" class="text" />
+        <input type="button" value="c" class="clear" onclick="clearbtn()" />
+        <input
+          type="button"
+          value="/"
+          class="operator"
+          onclick="operator(this.value)"
+        />
+        <input type="button" value="7" onclick="buttonClick(7)" />
+        <input type="button" value="8" onclick="buttonClick(8)" />
+        <input type="button" value="9" onclick="buttonClick(9)" />
+        <input
+          type="button"
+          value="*"
+          class="operator"
+          onclick="operator(this.value)"
+        />
+        <input type="button" value="4" onclick="buttonClick(4)" />
+        <input type="button" value="5" onclick="buttonClick(5)" />
+        <input type="button" value="6" onclick="buttonClick(6)" />
+        <input
+          type="button"
+          value="-"
+          class="operator"
+          onclick="operator(this.value)"
+        />
+        <input type="button" value="1" onclick="buttonClick(1)" />
+        <input type="button" value="2" onclick="buttonClick(2)" />
+        <input type="button" value="3" onclick="buttonClick(3)" />
+        <input
+          type="button"
+          value="+"
+          class="operator"
+          onclick="operator(this.value)"
+        />
+        <input
+          type="button"
+          value="."
+          class="operator"
+          onclick="operator(this.value)"
+        />
+        <input type="button" value="0" onclick="buttonClick(0)" />
+        <input
+          type="button"
+          value="="
+          class="operator equer"
+          onclick="resultButton()"
+        />
+      </form>
+    </div>
+
+    <script>
+      let text = document.querySelector(".text");
+      clearbtn = () => {
+        text.value = "";
+      };
+      buttonClick = (num) => {
+        text.value += num;
+      };
+      operator = (op) => {
+        text.value += op;
+      };
+      resultButton = () => {
+        text.value = eval(text.value);
+      };
+    </script>
+  </body>
+</html>
